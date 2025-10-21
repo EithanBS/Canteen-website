@@ -20,7 +20,7 @@ const Index = () => {
     <div className="flex min-h-screen items-center justify-center bg-background">
       <div className="text-center space-y-6">
         <h1 className="text-5xl font-heading text-glow-strong">CANTEEN SYSTEM</h1>
-        <p className="text-xl text-muted-foreground">Solo Leveling Inspired Food Ordering</p>
+        <p className="text-xl text-muted-foreground"></p>
         <Button onClick={() => navigate('/auth')} size="lg">Get Started</Button>
       </div>
     </div>
