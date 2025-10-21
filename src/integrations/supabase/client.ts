@@ -1,14 +1,14 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-// Read values from environment
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-// Create the Supabase client with auth options
-export const supabase = createClient(supabaseUrl!, supabaseAnonKey!, {
-  auth: {
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: true
-  }
-})
+// Check and error handling
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  // This will throw an error and be visible in the browser console
+  // and Next.js terminal during development/build.
+  throw new Error("Missing Supabase environment variables! Ensure NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are set.");
+}
+
+// Initialize the client only if variables are present
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
